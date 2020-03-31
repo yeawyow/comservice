@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Dashboard from "./Components/Dashboard";
-import ComEquip from "./Components/ComEquip";
-import Navbars from "./Components/Navbar";
+import Dashboard from "./Components/Pages/Dashboard";
+import ComEquip from "./Components/Pages/ComEquip";
+import Navbars from "./Components/Layout/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Sidebar from "./Components/Sidebar";
-import Footer from "./Components/Footer";
+import Sidebar from "./Components/Layout/Sidebar";
+import Footer from "./Components/Layout/Footer";
 
 class App extends Component {
   render() {
