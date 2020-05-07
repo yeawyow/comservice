@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { MDBDataTable } from "mdbreact";
+import Datatable from "react-bs-datatable"; // Import this package
 import { Link } from "react-router-dom";
 
 export default function ComEquip() {
@@ -9,43 +9,19 @@ export default function ComEquip() {
   useEffect(() => {
     const fetData = async () => {
       await axios
-        .get("http://202.80.228.46:3000/api/CompEquips")
-        .then(respon => setDataArrary({ comdata: respon.data }));
+        .get(
+          `http://202.80.228.46:3000/api/CompEquips?filter={"include":{"relation":"comStatuses"}}`
+        )
+        .then((respon) => setDataArrary({ comdata: respon.data }));
       // alert(JSON.stringify(data));
       // setDataArrary(respon.data);
     };
+
     fetData();
   }, []);
-  const data = {
-    columns: [
-      {
-        label: "#",
-        field: "id"
-      },
-      {
-        label: "รายละเอียด",
-        field: "attribute"
-      },
-      {
-        label: "ชื่อเครื่อง",
-        field: "comName"
-      },
-      {
-        label: "ที่ตั้งปัจจุบัน",
-        field: "localStand"
-      },
-      {
-        label: "activeKey",
-        field: "activeKey"
-      },
-      {
-        label: "สถานะ",
-        field: "equipType"
-      }
-    ],
-    rows: dataArray.comdata
-  };
-  console.log(dataArray);
+
+  console.log(dataArray.comdata);
+
   return (
     <div className="content-wrapper">
       <div className="content-header">
@@ -70,9 +46,7 @@ export default function ComEquip() {
       <section className="content-header">
         <div className="container-fluid">
           <div className="card">
-            <div className="card-body table-responsive p-0">
-              <MDBDataTable striped bordered hover data={data} />
-            </div>
+            <div className="card-body table-responsive p-0"></div>
           </div>
         </div>
       </section>

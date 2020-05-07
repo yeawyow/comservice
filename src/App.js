@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./Components/Pages/Dashboard";
-import ComEquip from "./Components/Pages/ComEquip";
+import ComEquipFrom from "./Components/Pages/ComEquipFrom";
+import RepairRegist from "./Components/Pages/RepairRegist";
 import Navbars from "./Components/Layout/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Sidebar from "./Components/Layout/Sidebar";
@@ -14,8 +15,12 @@ class App extends Component {
         <Router>
           <Navbars />
           <Sidebar />
-          <Route exact path="/" component={Dashboard} />
-          <Route exact path="/comequip" component={ComEquip} />
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/comequipfrom" component={ComEquipFrom} />
+            <Route exact path="/RepairRegist" component={RepairRegist} />
+          </Switch>
+
           <Footer />
         </Router>
       </div>
