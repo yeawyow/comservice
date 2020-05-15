@@ -10,7 +10,7 @@ export default function ComEquip() {
     const fetData = async () => {
       await axios
         .get(
-          `http://202.80.228.46:3000/api/CompEquips?filter={"include":{"relation":"comStatuses"}}`
+          `http://202.80.228.46:8080/api/CompEquips?filter={"include":{"relation":"comStatuses"}}`
         )
         .then((respon) => setDataArrary({ comdata: respon.data }));
       // alert(JSON.stringify(data));
