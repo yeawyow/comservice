@@ -7,7 +7,9 @@ export default function RepairList() {
   useEffect(() => {
     const fetData = async () => {
       await axios
-        .get(`http://202.80.228.46:8080/api/RegistRepairs`)
+        .get(
+          `http://202.80.228.46:8080/api/RegistRepairs?filter={"include":[{"relation":"topic_repair"},{"relation":"hospital_department"},{"relation":"status_repair"}]}`
+        )
         .then((respon) => setDataArrary({ Listdata: respon.data }));
       // alert(JSON.stringify(data));
       // setDataArrary(respon.data);
@@ -23,8 +25,36 @@ export default function RepairList() {
       sortable: true,
     },
     {
+      name: "หัวข้อ",
+      selector: "topic_repair.topicRepair",
+      sortable: true,
+      right: true,
+    },
+    {
+      name: "วันที่แจ้ง",
+      selector: "dateRegist",
+      sortable: true,
+      right: true,
+    },
+    {
+      name: "ชื่อผู้แจ้ง",
+      selector: "fullname",
+      sortable: true,
+    },
+    {
+      name: "รายละเอียดงาน",
+      selector: "comment_detail",
+      sortable: true,
+    },
+    {
       name: "หน่วยงาน",
-      selector: "department",
+      selector: "hospital_department.name",
+      sortable: true,
+      right: true,
+    },
+    {
+      name: "สถานะ",
+      selector: "status_repair.statusName",
       sortable: true,
       right: true,
     },
